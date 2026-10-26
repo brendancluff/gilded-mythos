@@ -1,95 +1,105 @@
 
 import type { Metadata } from "next";
+import SortingQuiz from "./SortingQuiz";
 
 export const metadata: Metadata = {
-    title: "House Sorting Quiz | Gilded Mythos",
-    description:
-        "Discover the four Houses of Kinari Academy in the world of Alori.",
+  title: "House Sorting Quiz | Gilded Mythos",
+  description:
+    "Discover the four Houses of Kinari Academy in the world of Alori.",
 };
 
 const houses = [
-    { name: "Solara", colorClass: "house-solara" },
-    { name: "Lunaris", colorClass: "house-lunaris" },
-    { name: "Atherion", colorClass: "house-atherion" },
-    { name: "Spriaxus", colorClass: "house-spriaxus" },
+  { name: "Solara", colorClass: "house-solara" },
+  { name: "Lunaris", colorClass: "house-lunaris" },
+  { name: "Atherion", colorClass: "house-atherion" },
+  { name: "Spriaxus", colorClass: "house-spriaxus" },
 ];
 
 export default function QuizPage() {
-    return (
-        <main className="quiz-page">
-            <section className="quiz-hero">
-                <p className="eyebrow">KINARI ACADEMY</p>
+  return (
+    <main className="quiz-page">
+      <section className="quiz-hero">
+        <p className="eyebrow">KINARI ACADEMY</p>
 
-                <h1>Discover Your House</h1>
+        <h1>Discover Your House</h1>
 
-                <p>
-                    Four Houses. One Academy. Every student
-                    has a place within Kinari Academy.
-                    Where will your story begin?
-                </p>
-            </section>
+        <p>
+          Four Houses. One Academy. Every student
+          has a place within Kinari Academy.
+          Where will your story begin?
+        </p>
+      </section>
 
-            <section className="quiz-content">
-                <div className="quiz-intro">
-                    <p className="eyebrow">THE FOUR HOUSES</p>
-                    <h2>Where Will You Belong?</h2>
+      <section className="quiz-content">
+        <div className="quiz-intro">
+          <p className="eyebrow">THE FOUR HOUSES</p>
 
-                    <p>
-                        Explore the four Houses of Kinari Academy.
-                        Their official crests, colors, mottos,
-                        and descriptions will be revealed here.
-                    </p>
-                </div>
+          <h2>Where Will You Belong?</h2>
 
-                <div className="house-grid">
-                    {houses.map((house) => (
-                        <article
-                            className={`house-card ${house.colorClass}`}
-                            key={house.name}
-                        >
-                            <div className="house-crest" aria-hidden="true">
-                                ♜
-                            </div>
+          <p>
+            Explore the four Houses of Kinari Academy.
+            Their official crests, colors, mottos,
+            and descriptions will be revealed here.
+          </p>
+        </div>
 
-                            <h3>{house.name}</h3>
+        <div className="house-grid">
+          {houses.map((house) => (
+            <article
+              className={`house-card ${house.colorClass}`}
+              key={house.name}
+            >
+              <div
+                className="house-crest"
+                aria-hidden="true"
+              >
+                ♜
+              </div>
 
-                            <p>
-                                Official House description
-                                coming soon.
-                            </p>
+              <h3>{house.name}</h3>
 
-                            <span className="house-placeholder">
-                                CREST & MOTTO COMING SOON
-                            </span>
-                        </article>
-                    ))}
-                </div>
+              <p>
+                Official House description
+                coming soon.
+              </p>
 
-                <div className="quiz-coming-soon">
-                    <div className="quiz-coming-symbol" aria-hidden="true">
-                        ✦
-                    </div>
+              <span className="house-placeholder">
+                CREST & MOTTO COMING SOON
+              </span>
+            </article>
+          ))}
+        </div>
 
-                    <h2>Your Sorting Awaits</h2>
+        <div className="quiz-coming-soon">
+          <div
+            className="quiz-coming-symbol"
+            aria-hidden="true"
+          >
+            ✦
+          </div>
 
-                    <p>
-                        The Kinari Academy House Sorting Quiz
-                        is currently being prepared.
-                        Once available, registered fans will
-                        be able to discover their House.
-                    </p>
+          <h2>Your Sorting Awaits</h2>
 
-                    <div className="quiz-status">
-                        SORTING QUIZ — COMING SOON
-                    </div>
+          <p>
+            The Kinari Academy House Sorting Quiz
+            is now available as a development preview.
+            Explore the questions and discover
+            what awaits you at the Academy.
+          </p>
 
-                    <p className="quiz-information">
-                        House assignments will be saved to fan
-                        profiles once the account and quiz
-                        systems are complete.
-                    </p>
-                </div>
-            </section>
-        </main>
-    );
+          <div className="quiz-status">
+            SORTING QUIZ — DEVELOPMENT PREVIEW
+          </div>
+
+          <p className="quiz-information">
+            This preview does not assign or save a House.
+            Permanent House assignments will become
+            available when account integration is complete.
+          </p>
+        </div>
+
+        <SortingQuiz />
+      </section>
+    </main>
+  );
 }

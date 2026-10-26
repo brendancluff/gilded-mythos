@@ -3,6 +3,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import AuthButton from "@/components/AuthButton";
 
 const links = [
   { name: "Home", href: "/" },
@@ -55,13 +56,7 @@ export default function Navbar() {
             </Link>
           ))}
 
-          <Link
-            href="/login"
-            className="login-button"
-            onClick={() => setMenuOpen(false)}
-          >
-            Login / Register
-          </Link>
+          <AuthButton />
         </div>
       </nav>
     </header>
