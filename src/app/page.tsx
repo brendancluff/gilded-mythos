@@ -1,6 +1,8 @@
 
 import Link from "next/link";
 
+const SHOP_URL = "https://gilded-mythos-shop.fourthwall.com/";
+
 const features = [
   {
     symbol: "⚔",
@@ -73,7 +75,10 @@ export default function Home() {
 
         <div className="feature-grid">
           {features.map((feature) => (
-            <article className="feature-card" key={feature.title}>
+            <article
+              className="feature-card"
+              key={feature.title}
+            >
               <div className="feature-symbol">
                 {feature.symbol}
               </div>
@@ -97,20 +102,62 @@ export default function Home() {
           <p>
             Solara. Lunaris. Atherion. Spriaxus.
             Four Houses await those who enter Kinari Academy.
-            Your journey will begin with a House Sorting Quiz.
+            Discover your House by taking the official
+            Kinari Academy House Sorting Quiz.
           </p>
 
-          <p className="coming-soon">
-            House Sorting Quiz — Coming Soon
-          </p>
+          <Link href="/quiz" className="coming-soon">
+            Take the House Sorting Quiz
+          </Link>
+        </div>
+      </section>
+
+      <section className="merch-section">
+        <div className="merch-content">
+          <div className="merch-art" aria-hidden="true">
+            <span className="merch-symbol">✦</span>
+            <span className="merch-art-title">
+              Gilded Mythos
+            </span>
+            <span className="merch-art-subtitle">
+              OFFICIAL MERCHANDISE
+            </span>
+          </div>
+
+          <div className="merch-details">
+            <p className="eyebrow">
+              OFFICIAL GILDED MYTHOS
+            </p>
+
+            <h2>Merchandise</h2>
+
+            <p>
+              Bring a piece of Alori into your world.
+              Explore official Gilded Mythos merchandise
+              inspired by our stories and adventures.
+            </p>
+
+            <a
+              href={SHOP_URL}
+              className="button-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Shop Our Merch ↗
+            </a>
+          </div>
         </div>
       </section>
 
       <footer className="site-footer">
-        <p className="footer-brand">✦ Gilded Mythos ✦</p>
+        <p className="footer-brand">
+          ✦ Gilded Mythos ✦
+        </p>
+
         <p>
           Adventures across Alori. Stories beyond imagination.
         </p>
+
         <p className="footer-note">
           An independent Dungeons &amp; Dragons fan community.
         </p>

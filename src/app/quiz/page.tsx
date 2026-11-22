@@ -70,34 +70,6 @@ export default function QuizPage() {
           ))}
         </div>
 
-        <div className="quiz-coming-soon">
-          <div
-            className="quiz-coming-symbol"
-            aria-hidden="true"
-          >
-            ✦
-          </div>
-
-          <h2>Your Sorting Awaits</h2>
-
-          <p>
-            The Kinari Academy House Sorting Quiz
-            is now available as a development preview.
-            Explore the questions and discover
-            what awaits you at the Academy.
-          </p>
-
-          <div className="quiz-status">
-            SORTING QUIZ — DEVELOPMENT PREVIEW
-          </div>
-
-          <p className="quiz-information">
-            This preview does not assign or save a House.
-            Permanent House assignments will become
-            available when account integration is complete.
-          </p>
-        </div>
-
         <SortingQuiz />
       </section>
     </main>

@@ -13,7 +13,10 @@ const links = [
   { name: "House Quiz", href: "/quiz" },
   { name: "Community", href: "/community" },
   { name: "News", href: "/news" },
-  { name: "Shop", href: "/shop" },
+  {
+    name: "Shop",
+    href: "https://gilded-mythos-shop.fourthwall.com/",
+  },
 ];
 
 export default function Navbar() {
@@ -46,15 +49,21 @@ export default function Navbar() {
           id="main-menu"
           className={`nav-links ${menuOpen ? "open" : ""}`}
         >
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const isExternal = link.href.startsWith("https://");
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
 
           <AuthButton />
         </div>

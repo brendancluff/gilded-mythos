@@ -2296,3 +2296,132 @@ background:
     transform: none;
   }
 }
+
+/* =========================================
+   GILDED MYTHOS HOMEPAGE MERCHANDISE
+   ========================================= */
+
+.merch-section {
+  padding: 80px 24px 110px;
+  background: #0b0d17;
+}
+
+.merch-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 12px;
+  background:
+    radial-gradient(
+      ellipse at 75% 50%,
+      rgba(66, 44, 71, 0.65),
+      transparent 70%
+    ),
+    linear-gradient(135deg, #1b2030, #151a29);
+}
+
+.merch-art {
+  min-height: 370px;
+  padding: 45px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-align: center;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(212, 175, 55, 0.13),
+      transparent 60%
+    ),
+    linear-gradient(
+      145deg,
+      #422c47,
+      #333a57,
+      #111722
+    );
+}
+
+.merch-symbol {
+  font-size: 90px;
+  color: var(--gold);
+  text-shadow: 0 0 35px rgba(212, 175, 55, 0.4);
+}
+
+.merch-art-title {
+  color: var(--gold-light);
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: bold;
+}
+
+.merch-art-subtitle {
+  color: var(--mist-blue);
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.merch-details {
+  padding: 55px;
+}
+
+.merch-details h2 {
+  margin: 15px 0 20px;
+  color: var(--gold);
+  font-size: clamp(36px, 4vw, 52px);
+}
+
+.merch-details > p:not(.eyebrow) {
+  margin-bottom: 30px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.merch-details .button-primary {
+  display: inline-block;
+}
+
+.merch-details .button-primary:hover {
+  background: var(--gold-light);
+}
+
+/* Merchandise mobile layout */
+
+@media (max-width: 768px) {
+  .merch-section {
+    padding: 60px 20px 80px;
+  }
+
+  .merch-content {
+    grid-template-columns: 1fr;
+  }
+
+  .merch-art {
+    min-height: 260px;
+    padding: 40px 20px;
+  }
+
+  .merch-symbol {
+    font-size: 65px;
+  }
+
+  .merch-details {
+    padding: 35px 25px 45px;
+    text-align: center;
+  }
+
+  .merch-details h2 {
+    font-size: 38px;
+  }
+
+  .merch-details > p:not(.eyebrow) {
+    font-size: 16px;
+  }
+}
