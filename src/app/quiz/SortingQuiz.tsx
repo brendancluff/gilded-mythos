@@ -3,6 +3,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import HouseShareCard from "./HouseShareCard";
 
 import { createClient } from "@/lib/supabase/client";
 import { quizQuestions } from "@/lib/quiz/questions";
@@ -50,6 +52,10 @@ export default function SortingQuiz() {
   // Authentication and existing House checks
   const [checkingHouse, setCheckingHouse] = useState(true);
   const [alreadySorted, setAlreadySorted] = useState(false);
+  const [savedHouses, setSavedHouses] = useState<{
+    primaryHouse: HouseName;
+    secondaryHouse: HouseName | null;
+  } | null>(null);
   const [houseCheckError, setHouseCheckError] =
     useState<string | null>(null);
   const [needsLogin, setNeedsLogin] = useState(false);
@@ -98,7 +104,7 @@ export default function SortingQuiz() {
 
       const { data, error } = await supabase
         .from("profiles")
-        .select("house_id")
+        .select("house_id, secondary_house_id")
         .eq("id", user.id)
         .single();
 
@@ -110,6 +116,65 @@ export default function SortingQuiz() {
         );
       } else {
         setAlreadySorted(data.house_id !== null);
+
+        if (data.house_id) {
+          const houseIds = [
+            data.house_id,
+            data.secondary_house_id,
+          ].filter((id): id is string => id !== null);
+
+          const { data: houses, error: housesError } =
+            await supabase
+              .from("houses")
+              .select("id, name")
+              .in("id", houseIds);
+
+          if (!active) return;
+
+          if (housesError || !houses) {
+            setHouseCheckError(
+              "Unable to load your saved House results."
+            );
+            setCheckingHouse(false);
+            return;
+          }
+
+          const primary = houses.find(
+            (house) => house.id === data.house_id
+          );
+
+          const secondary = houses.find(
+            (house) => house.id === data.secondary_house_id
+          );
+
+          const validNames: HouseName[] = [
+            "Solara",
+            "Lunaris",
+            "Aetherion",
+            "Spiraxus",
+          ];
+
+          if (
+            !primary ||
+            !validNames.includes(primary.name as HouseName) ||
+            (data.secondary_house_id &&
+              (!secondary ||
+                !validNames.includes(secondary.name as HouseName)))
+          ) {
+            setHouseCheckError(
+              "Unable to identify your saved House assignment."
+            );
+            setCheckingHouse(false);
+            return;
+          }
+
+          setSavedHouses({
+            primaryHouse: primary.name as HouseName,
+            secondaryHouse: secondary
+              ? (secondary.name as HouseName)
+              : null,
+          });
+        }
       }
 
       setCheckingHouse(false);
@@ -342,6 +407,10 @@ export default function SortingQuiz() {
             </>
           )}
 
+          <HouseShareCard
+            primaryHouse={result.primaryHouse}
+            secondaryHouse={result.secondaryHouse}
+          />
           {result.testMode ? (
             <>
               <p>
@@ -364,7 +433,7 @@ export default function SortingQuiz() {
                 Your House assignment has been
                 permanently saved to your profile.
               </p>
-
+              
               <Link
                 href="/profile"
                 className="sorting-start-button"
@@ -377,6 +446,8 @@ export default function SortingQuiz() {
       </section>
     );
   }
+
+  // SCREEN 4: User already has a House
 
   // SCREEN 4: User already has a House
   if (alreadySorted) {
@@ -401,6 +472,46 @@ export default function SortingQuiz() {
             experience. Your House assignment is permanent.
           </p>
 
+          {savedHouses ? (
+            <>
+              <p>Your Primary House</p>
+
+              <Image
+                src={`/houses/${savedHouses.primaryHouse.toUpperCase()}.webp`}
+                alt={`${savedHouses.primaryHouse} House crest`}
+                width={220}
+                height={300}
+                style={{ width: "180px", height: "auto", margin: "16px auto" }}
+              />
+
+              <h2>{savedHouses.primaryHouse}</h2>
+
+              {savedHouses.secondaryHouse && (
+                <>
+                  <p>Your Secondary House</p>
+                  <Image
+                    src={`/houses/${savedHouses.secondaryHouse.toUpperCase()}.webp`}
+                    alt={`${savedHouses.secondaryHouse} House crest`}
+                    width={220}
+                    height={300}
+                    style={{ width: "180px", height: "auto", margin: "16px auto" }}
+                  />
+                  <h2>{savedHouses.secondaryHouse}</h2>
+                </>
+              )}
+
+              <HouseShareCard
+                primaryHouse={savedHouses.primaryHouse}
+                secondaryHouse={savedHouses.secondaryHouse}
+              />
+            </>
+          ) : (
+            <p>
+              Your House assignment is saved, but its
+              details could not be loaded.
+            </p>
+          )}
+
           <Link
             href="/profile"
             className="sorting-start-button"
@@ -411,6 +522,7 @@ export default function SortingQuiz() {
       </section>
     );
   }
+
 
   // SCREEN 5: Welcome
   if (!hasStarted) {

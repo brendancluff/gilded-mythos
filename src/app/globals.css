@@ -1195,7 +1195,7 @@ background:
   color: #182632;
 }
 
-.house-atherion {
+.house-Aetherion {
   background: linear-gradient(145deg, #245c3b, #123723);
 }
 
@@ -1219,13 +1219,13 @@ background:
 /* House text readability */
 
 .house-solara > p,
-.house-atherion > p,
+.house-Aetherion > p,
 .house-spriaxus > p {
   color: #f4f6fa;
 }
 
 .house-solara h3,
-.house-atherion h3,
+.house-Aetherion h3,
 .house-spriaxus h3 {
   color: var(--gold-light);
 }
@@ -2423,5 +2423,207 @@ background:
 
   .merch-details > p:not(.eyebrow) {
     font-size: 16px;
+  }
+}
+
+/* Kinari Academy House headings */
+.quiz-page .house-card h3 {
+  color: #D4AF37;
+}
+
+/* Official House words */
+.quiz-page .house-words {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Kinari Academy House card colors */
+.quiz-page .house-card.house-solara {
+  background: linear-gradient(135deg, #701F2B, #42121B);
+}
+
+.quiz-page .house-card.house-lunaris {
+  background: linear-gradient(135deg, #88BAC8, #4D869B);
+}
+
+.quiz-page .house-card.house-aetherion {
+  background: linear-gradient(135deg, #245C3B, #163824);
+}
+
+.quiz-page .house-card.house-spiraxus {
+  background: linear-gradient(135deg, #45205E, #291238);
+}
+
+/* Keep all House names gold */
+.quiz-page .house-card h3 {
+  color: #D4AF37;
+}
+
+/* Keep all House words white */
+.quiz-page .house-card .house-words {
+  color: #FFFFFF;
+}
+
+/* Community Discord button */
+.community-link {
+  display: inline-block;
+  background: #D4AF37;
+  color: #111722;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.community-link:hover {
+  background: #F0D77C;
+  color: #111722;
+  transform: translateY(-2px);
+}
+
+.community-link:focus-visible {
+  outline: 3px solid #F0D77C;
+  outline-offset: 3px;
+}
+
+/* Community Art Gallery */
+
+.art-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin: 48px auto;
+  max-width: 1200px;
+  align-items: start;
+}
+
+.art-gallery-card {
+  overflow: hidden;
+  background: linear-gradient(145deg, #25283d, #171b2a);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 14px;
+}
+
+.art-gallery-image {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.art-gallery-image img {
+  display: block;
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.art-gallery-credit {
+  padding: 18px;
+  text-align: center;
+  border-top: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.art-gallery-credit span {
+  color: #88BAC8;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+}
+
+.art-gallery-credit h3 {
+  color: #D4AF37;
+  margin-top: 8px;
+  font-size: 1.2rem;
+}
+
+.art-gallery-back {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.art-gallery-back a {
+  color: #D4AF37;
+  text-decoration: none;
+}
+
+.art-gallery-back a:hover {
+  color: #F0D77C;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .art-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .art-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Kinari Academy House Sharing */
+
+.house-share-actions {
+  margin: 32px auto;
+  padding: 24px;
+  max-width: 600px;
+  text-align: center;
+  background: rgba(17, 23, 34, 0.45);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 12px;
+}
+
+.house-share-actions h3 {
+  color: #D4AF37;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.house-share-actions p {
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.house-share-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.house-share-buttons button {
+  background: #D4AF37;
+  color: #111722;
+  border: 1px solid #F0D77C;
+  border-radius: 8px;
+  padding: 14px 22px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.house-share-buttons button:hover:not(:disabled) {
+  background: #F0D77C;
+  transform: translateY(-2px);
+}
+
+.house-share-buttons button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .house-share-buttons {
+    flex-direction: column;
+  }
+
+  .house-share-buttons button {
+    width: 100%;
   }
 }

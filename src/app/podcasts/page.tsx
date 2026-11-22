@@ -48,7 +48,7 @@ export default function PodcastsPage() {
               <div className="podcast-houses">
                 <span>Solara</span>
                 <span>Lunaris</span>
-                <span>Atherion</span>
+                <span>Aetherion</span>
                 <span>Spriaxus</span>
               </div>
 

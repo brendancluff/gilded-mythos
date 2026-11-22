@@ -3,7 +3,7 @@ import type { HouseName, QuizQuestion } from "./types";
 
 const S: HouseName = "Solara";
 const L: HouseName = "Lunaris";
-const A: HouseName = "Atherion";
+const A: HouseName = "Aetherion";
 const P: HouseName = "Spiraxus";
 
 type AnswerInput = [string, string, HouseName[]];

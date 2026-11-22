@@ -19,7 +19,7 @@ type House = {
 const houseColors: Record<string, string> = {
   Solara: "#701F2B",
   Lunaris: "#88BAC8",
-  Atherion: "#245C3B",
+  Aetherion: "#245C3B",
   Spiraxus: "#45205E",
 };
 

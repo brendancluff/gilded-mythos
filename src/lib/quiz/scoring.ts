@@ -9,7 +9,7 @@ import type {
 const HOUSES: HouseName[] = [
   "Solara",
   "Lunaris",
-  "Atherion",
+  "Aetherion",
   "Spiraxus",
 ];
 
@@ -18,7 +18,7 @@ const TIE_BREAKER_QUESTIONS = [3, 5, 12, 10];
 const FALLBACK_PRIORITY: HouseName[] = [
   "Solara",
   "Lunaris",
-  "Atherion",
+  "Aetherion",
   "Spiraxus",
 ];
 
@@ -98,7 +98,7 @@ export function calculateSortingResult(
   const scores: HouseScores = {
     Solara: 0,
     Lunaris: 0,
-    Atherion: 0,
+    Aetherion: 0,
     Spiraxus: 0,
   };
 

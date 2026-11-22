@@ -2,7 +2,7 @@
 export type HouseName =
   | "Solara"
   | "Lunaris"
-  | "Atherion"
+  | "Aetherion"
   | "Spiraxus";
 
 export type QuizAnswer = {

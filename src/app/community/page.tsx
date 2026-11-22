@@ -8,21 +8,25 @@ export const metadata: Metadata = {
 };
 
 const communitySections = [
+
   {
     symbol: "✦",
-    title: "Fan Art Gallery",
+    title: "Community Art Gallery",
     description:
-      "Celebrate the creativity of the Gilded Mythos community. Discover fan artwork inspired by Alori and its adventures.",
-    status: "Gallery Coming Soon",
+      "Celebrate the creativity of the Gilded Mythos community. Explore artwork inspired by Alori and its adventures.",
+    status: "Explore Gallery",
     className: "community-art",
+    link: "/community-art",
   },
+
   {
     symbol: "✧",
     title: "Discord Community",
     description:
       "Connect with other fans, discuss your favorite moments, and share your adventures with the Gilded Mythos community.",
-    status: "Discord Link Coming Soon",
+    status: "Join Our Discord",
     className: "community-discord",
+    link: "https://discord.gg/UUZdKkdMM",
   },
   {
     symbol: "♫",
@@ -31,6 +35,7 @@ const communitySections = [
       "Explore music and playlists associated with Gilded Mythos, its characters, and the world of Alori.",
     status: "Music Coming Soon",
     className: "community-music",
+    link: null,
   },
 ];
 
@@ -80,15 +85,29 @@ export default function CommunityPage() {
 
               <p>{section.description}</p>
 
-              <div className="community-status">
-                {section.status}
-              </div>
+              {section.link ? (
+                <a
+                  href={section.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="community-status community-link"
+                >
+                  {section.status}
+                </a>
+              ) : (
+                <div className="community-status">
+                  {section.status}
+                </div>
+              )}
             </article>
           ))}
         </div>
 
         <div className="community-guidelines">
-          <span className="guidelines-symbol" aria-hidden="true">
+          <span
+            className="guidelines-symbol"
+            aria-hidden="true"
+          >
             ✦
           </span>
 

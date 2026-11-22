@@ -68,12 +68,12 @@ test("Lunaris receives a primary House only", () => {
   assert.equal(result.secondaryHouse, null);
 });
 
-test("Atherion receives a primary House only", () => {
+test("Aetherion receives a primary House only", () => {
   const result = calculateSortingResult(
-    answersFor("Atherion")
+    answersFor("Aetherion")
   );
 
-  assert.equal(result.primaryHouse, "Atherion");
+  assert.equal(result.primaryHouse, "Aetherion");
   assert.equal(result.secondaryHouse, null);
 });
 
@@ -173,7 +173,7 @@ test("Q3 resolves a tie between non-Spiraxus Houses", () => {
         result.scores.Solara === highest &&
         result.scores.Lunaris === highest &&
         result.scores.Spiraxus < highest &&
-        result.scores.Atherion < highest
+        result.scores.Aetherion < highest
       ) {
         return { ...responses };
       }
@@ -220,12 +220,12 @@ test("Q3 resolves a tie between non-Spiraxus Houses", () => {
 test("Q5 resolves a tie when Q3 cannot", () => {
   const responses = answersFor("Solara");
 
-  // Q3 favors Atherion, so it cannot resolve
+  // Q3 favors Aetherion, so it cannot resolve
   // a tie between Solara and Lunaris.
   responses[3] = quizQuestions
     .find((question) => question.id === 3)!
     .answers.find((answer) =>
-      answer.houses.includes("Atherion")
+      answer.houses.includes("Aetherion")
     )!.id;
 
   // Q5 favors Lunaris.
@@ -243,7 +243,7 @@ test("Q5 resolves a tie when Q3 cannot", () => {
       if (
         result.scores.Solara === highest &&
         result.scores.Lunaris === highest &&
-        result.scores.Atherion < highest &&
+        result.scores.Aetherion < highest &&
         result.scores.Spiraxus < highest
       ) {
         return { ...responses };
@@ -291,7 +291,7 @@ test("Q5 resolves a tie when Q3 cannot", () => {
 test("Q12 resolves a tie when Q3 and Q5 cannot", () => {
   const responses = answersFor("Solara");
 
-  // Q3 and Q5 favor Atherion, so neither can
+  // Q3 and Q5 favor Aetherion, so neither can
   // resolve a tie between Solara and Lunaris.
   for (const questionId of [3, 5]) {
     const question = quizQuestions.find(
@@ -299,7 +299,7 @@ test("Q12 resolves a tie when Q3 and Q5 cannot", () => {
     )!;
 
     responses[questionId] = question.answers.find(
-      (answer) => answer.houses.includes("Atherion")
+      (answer) => answer.houses.includes("Aetherion")
     )!.id;
   }
 
@@ -318,7 +318,7 @@ test("Q12 resolves a tie when Q3 and Q5 cannot", () => {
       if (
         result.scores.Solara === highest &&
         result.scores.Lunaris === highest &&
-        result.scores.Atherion < highest &&
+        result.scores.Aetherion < highest &&
         result.scores.Spiraxus < highest
       ) {
         return { ...responses };
@@ -366,7 +366,7 @@ test("Q12 resolves a tie when Q3 and Q5 cannot", () => {
 test("Q10 resolves a tie when Q3, Q5, and Q12 cannot", () => {
   const responses = answersFor("Solara");
 
-  // These three questions favor Atherion, so they
+  // These three questions favor Aetherion, so they
   // cannot resolve a Solara-Lunaris tie.
   for (const questionId of [3, 5, 12]) {
     const question = quizQuestions.find(
@@ -374,7 +374,7 @@ test("Q10 resolves a tie when Q3, Q5, and Q12 cannot", () => {
     )!;
 
     responses[questionId] = question.answers.find(
-      (answer) => answer.houses.includes("Atherion")
+      (answer) => answer.houses.includes("Aetherion")
     )!.id;
   }
 
@@ -393,7 +393,7 @@ test("Q10 resolves a tie when Q3, Q5, and Q12 cannot", () => {
       if (
         result.scores.Solara === highest &&
         result.scores.Lunaris === highest &&
-        result.scores.Atherion < highest &&
+        result.scores.Aetherion < highest &&
         result.scores.Spiraxus < highest
       ) {
         return { ...responses };
@@ -441,7 +441,7 @@ test("Q10 resolves a tie when Q3, Q5, and Q12 cannot", () => {
 test("Emergency fallback resolves a tie when all tie-breakers fail", () => {
   const responses = answersFor("Solara");
 
-  // All four tie-breakers favor Atherion,
+  // All four tie-breakers favor Aetherion,
   // so none can resolve a Solara-Lunaris tie.
   for (const questionId of [3, 5, 12, 10]) {
     const question = quizQuestions.find(
@@ -449,7 +449,7 @@ test("Emergency fallback resolves a tie when all tie-breakers fail", () => {
     )!;
 
     responses[questionId] = question.answers.find(
-      (answer) => answer.houses.includes("Atherion")
+      (answer) => answer.houses.includes("Aetherion")
     )!.id;
   }
 
@@ -461,7 +461,7 @@ test("Emergency fallback resolves a tie when all tie-breakers fail", () => {
       if (
         result.scores.Solara === highest &&
         result.scores.Lunaris === highest &&
-        result.scores.Atherion < highest &&
+        result.scores.Aetherion < highest &&
         result.scores.Spiraxus < highest
       ) {
         return { ...responses };
@@ -525,7 +525,7 @@ test("Spiraxus receives the highest-scoring secondary House", () => {
   assert.deepEqual(result.scores, {
     Solara: 9,
     Lunaris: 2,
-    Atherion: 3,
+    Aetherion: 3,
     Spiraxus: 9,
   });
 
@@ -553,7 +553,7 @@ test("Q3 resolves a tie for Spiraxus secondary House", () => {
       if (
         result.primaryHouse === "Spiraxus" &&
         result.scores.Solara === result.scores.Lunaris &&
-        result.scores.Solara > result.scores.Atherion
+        result.scores.Solara > result.scores.Aetherion
       ) {
         return { ...responses };
       }
@@ -607,7 +607,7 @@ test("Emergency fallback resolves a Spiraxus secondary House tie", () => {
     )!;
 
     responses[questionId] = question.answers.find(
-      (answer) => answer.houses.includes("Atherion")
+      (answer) => answer.houses.includes("Aetherion")
     )!.id;
   }
 
@@ -618,7 +618,7 @@ test("Emergency fallback resolves a Spiraxus secondary House tie", () => {
       if (
         result.primaryHouse === "Spiraxus" &&
         result.scores.Solara === result.scores.Lunaris &&
-        result.scores.Solara > result.scores.Atherion
+        result.scores.Solara > result.scores.Aetherion
       ) {
         return { ...responses };
       }
@@ -658,6 +658,6 @@ test("Emergency fallback resolves a Spiraxus secondary House tie", () => {
 
   assert.equal(result.primaryHouse, "Spiraxus");
   assert.equal(result.scores.Solara, result.scores.Lunaris);
-  assert.ok(result.scores.Solara > result.scores.Atherion);
+  assert.ok(result.scores.Solara > result.scores.Aetherion);
   assert.equal(result.secondaryHouse, "Solara");
 });

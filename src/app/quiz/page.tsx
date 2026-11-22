@@ -1,5 +1,6 @@
 
 import type { Metadata } from "next";
+import Image from "next/image";
 import SortingQuiz from "./SortingQuiz";
 
 export const metadata: Metadata = {
@@ -9,10 +10,30 @@ export const metadata: Metadata = {
 };
 
 const houses = [
-  { name: "Solara", colorClass: "house-solara" },
-  { name: "Lunaris", colorClass: "house-lunaris" },
-  { name: "Atherion", colorClass: "house-atherion" },
-  { name: "Spriaxus", colorClass: "house-spriaxus" },
+  {
+    name: "Solara",
+    colorClass: "house-solara",
+    image: "/houses/SOLARA.webp",
+    words: "Order · Purpose · Creation",
+  },
+  {
+    name: "Lunaris",
+    colorClass: "house-lunaris",
+    image: "/houses/LUNARIS.webp",
+    words: "Knowledge · Emotion · History",
+  },
+  {
+    name: "Aetherion",
+    colorClass: "house-aetherion",
+    image: "/houses/AETHERION.webp",
+    words: "Change · Growth · Rebirth",
+  },
+  {
+    name: "Spiraxus",
+    colorClass: "house-spiraxus",
+    image: "/houses/SPIRAXUS.webp",
+    words: "Ruin · Prophecy · Truth",
+  },
 ];
 
 export default function QuizPage() {
@@ -37,9 +58,9 @@ export default function QuizPage() {
           <h2>Where Will You Belong?</h2>
 
           <p>
-            Explore the four Houses of Kinari Academy.
-            Their official crests, colors, mottos,
-            and descriptions will be revealed here.
+            Explore the four Houses of Kinari Academy
+            and discover their official crests.
+            Each House has its own identity and story.
           </p>
         </div>
 
@@ -49,23 +70,25 @@ export default function QuizPage() {
               className={`house-card ${house.colorClass}`}
               key={house.name}
             >
-              <div
-                className="house-crest"
-                aria-hidden="true"
-              >
-                ♜
+              <div className="house-crest">
+                <Image
+                  src={house.image}
+                  alt={`${house.name} official House crest`}
+                  width={320}
+                  height={400}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    objectFit: "contain",
+                  }}
+                />
               </div>
 
               <h3>{house.name}</h3>
 
-              <p>
-                Official House description
-                coming soon.
+              <p className="house-words">
+                {house.words}
               </p>
-
-              <span className="house-placeholder">
-                CREST & MOTTO COMING SOON
-              </span>
             </article>
           ))}
         </div>
