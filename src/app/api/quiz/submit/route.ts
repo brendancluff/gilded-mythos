@@ -43,19 +43,6 @@ if (process.env.QUIZ_TEST_MODE === "true") {
     const admin = createAdminClient();
 
 
-const { data: connectionTest, error: connectionError } =
-  await admin
-    .from("houses")
-    .select("name")
-    .limit(1);
-
-if (connectionError) {
-  console.error("Admin connection failed:", connectionError);
-} else {
-  console.log("Admin connection successful:", connectionTest);
-}
-
-
     // Atomically assign the Houses exactly once.
     const { data: assigned, error: assignmentError } =
       await admin.rpc("assign_kinari_house", {
