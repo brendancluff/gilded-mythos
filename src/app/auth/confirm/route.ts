@@ -11,7 +11,9 @@ export async function GET(request: NextRequest) {
 
   if (
     !token_hash ||
-    (type !== "signup" && type !== "email")
+    (type !== "signup" &&
+      type !== "email" &&
+      type !== "recovery")
   ) {
     return NextResponse.redirect(
       new URL("/login?error=invalid_confirmation", request.url)
@@ -27,7 +29,18 @@ export async function GET(request: NextRequest) {
 
   if (error) {
     return NextResponse.redirect(
-      new URL("/login?error=confirmation_failed", request.url)
+      new URL(
+        type === "recovery"
+          ? "/forgot-password?error=invalid_link"
+          : "/login?error=confirmation_failed",
+        request.url
+      )
+    );
+  }
+
+  if (type === "recovery") {
+    return NextResponse.redirect(
+      new URL("/reset-password", request.url)
     );
   }
 

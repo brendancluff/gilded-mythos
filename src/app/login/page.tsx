@@ -3,6 +3,7 @@
 
 import { Suspense, useState, type FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 
 type AuthMode = "register" | "login";
@@ -159,6 +160,20 @@ function LoginForm() {
               minLength={mode === "register" ? 8 : undefined}
               required
             />
+              {mode === "login" && (
+              <div style={{ textAlign: "right", marginTop: "8px" }}>
+                <Link
+                  href="/forgot-password"
+                  style={{
+                    color: "#D4AF37",
+                    fontSize: "0.9rem",
+                    textDecoration: "underline",
+                  }}
+                >
+                  Forgot Password?
+                </Link>
+              </div>
+            )}
 
             {confirmed && (
               <p className="auth-success" role="status">

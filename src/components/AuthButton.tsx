@@ -69,21 +69,25 @@ export default function AuthButton() {
   }
 
   return (
-    <div className="auth-nav-controls">
-      <button
-        type="button"
-        className="auth-nav-button"
-        onClick={handleLogout}
-        disabled={signingOut}
-      >
-        {signingOut ? "Signing Out..." : "Log Out"}
-      </button>
+  <div className="auth-nav-controls">
+    <Link href="/profile" className="auth-nav-button">
+      My Profile
+    </Link>
 
-      {error && (
-        <span role="alert" className="auth-nav-error">
-          {error}
-        </span>
-      )}
-    </div>
-  );
+    <button
+      type="button"
+      className="auth-nav-button"
+      onClick={handleLogout}
+      disabled={signingOut}
+    >
+      {signingOut ? "Signing Out..." : "Log Out"}
+    </button>
+
+    {error && (
+      <span role="alert" className="auth-nav-error">
+        {error}
+      </span>
+    )}
+  </div>
+);
 }
