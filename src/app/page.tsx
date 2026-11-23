@@ -100,7 +100,7 @@ export default function Home() {
           <h2>Where Will You Belong?</h2>
 
           <p>
-            Solara. Lunaris. Aetherion. Spriaxus.
+            Solara. Lunaris. Aetherion. Spiraxus.
             Four Houses await those who enter Kinari Academy.
             Discover your House by taking the official
             Kinari Academy House Sorting Quiz.

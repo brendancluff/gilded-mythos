@@ -49,7 +49,7 @@ export default function PodcastsPage() {
                 <span>Solara</span>
                 <span>Lunaris</span>
                 <span>Aetherion</span>
-                <span>Spriaxus</span>
+                <span>Spiraxus</span>
               </div>
 
               <p className="podcast-note">
