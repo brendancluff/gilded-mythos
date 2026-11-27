@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 
-const SHOP_URL = "https://gilded-mythos-shop.fourthwall.com/";
+const SHOP_URL = "https://shop.gildedmythos.com/";
 
 const features = [
   {

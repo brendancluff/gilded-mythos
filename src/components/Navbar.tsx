@@ -15,7 +15,7 @@ const links = [
   { name: "News", href: "/news" },
   {
     name: "Shop",
-    href: "https://gilded-mythos-shop.fourthwall.com/",
+    href: "https://shop.gildedmythos.com/",
   },
 ];
 
